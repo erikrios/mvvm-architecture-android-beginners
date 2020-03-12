@@ -5,11 +5,15 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.erikriosetiawan.mvvmarchitectureandroidbeginners.R
 import com.erikriosetiawan.mvvmarchitectureandroidbeginners.adapter.MainAdapter
+import com.erikriosetiawan.mvvmarchitectureandroidbeginners.data.api.ApiHelper
+import com.erikriosetiawan.mvvmarchitectureandroidbeginners.data.api.ApiServiceImpl
 import com.erikriosetiawan.mvvmarchitectureandroidbeginners.data.model.User
+import com.erikriosetiawan.mvvmarchitectureandroidbeginners.ui.base.ViewModelFactory
 import com.erikriosetiawan.mvvmarchitectureandroidbeginners.ui.main.viewmodel.MainViewModel
 import com.erikriosetiawan.mvvmarchitectureandroidbeginners.utils.Status
 import kotlinx.android.synthetic.main.activity_main.*
@@ -64,5 +68,12 @@ class MainActivity : AppCompatActivity() {
     private fun renderList(users: List<User>) {
         adapter.addData(users)
         adapter.notifyDataSetChanged()
+    }
+
+    private fun setUpViewModel() {
+        mainViewModel = ViewModelProviders.of(
+            this,
+            ViewModelFactory(ApiHelper(ApiServiceImpl()))
+        ).get(MainViewModel::class.java)
     }
 }
