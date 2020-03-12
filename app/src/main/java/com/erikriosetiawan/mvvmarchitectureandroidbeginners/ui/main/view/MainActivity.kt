@@ -1,7 +1,8 @@
-package com.erikriosetiawan.mvvmarchitectureandroidbeginners
+package com.erikriosetiawan.mvvmarchitectureandroidbeginners.ui.main.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.erikriosetiawan.mvvmarchitectureandroidbeginners.R
 
 class MainActivity : AppCompatActivity() {
 
