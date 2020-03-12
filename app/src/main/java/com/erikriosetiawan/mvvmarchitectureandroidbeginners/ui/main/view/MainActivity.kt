@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.erikriosetiawan.mvvmarchitectureandroidbeginners.R
 import com.erikriosetiawan.mvvmarchitectureandroidbeginners.adapter.MainAdapter
+import com.erikriosetiawan.mvvmarchitectureandroidbeginners.data.model.User
 import com.erikriosetiawan.mvvmarchitectureandroidbeginners.ui.main.viewmodel.MainViewModel
 import com.erikriosetiawan.mvvmarchitectureandroidbeginners.utils.Status
 import kotlinx.android.synthetic.main.activity_main.*
@@ -58,5 +59,10 @@ class MainActivity : AppCompatActivity() {
             }
         })
         mainViewModel.fetchUsers()
+    }
+
+    private fun renderList(users: List<User>) {
+        adapter.addData(users)
+        adapter.notifyDataSetChanged()
     }
 }
